@@ -1,15 +1,19 @@
 package com.example.rabbitmq
 
+import com.example.mq.MQListener
 import com.example.mq.MQReceiver
 import com.example.mq.MQSender
 import grails.plugin.spock.IntegrationSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 
+import static com.example.TestUtilities.waitForTheMessage
+
 class TestRabbitMQIntSpec extends IntegrationSpec {
 
    private static final String MESSAGE = "Hello World!"
    @Autowired
+   @Qualifier("rabbitMQSenderService")
    MQSender mqSender
 
    @Autowired
@@ -19,7 +23,7 @@ class TestRabbitMQIntSpec extends IntegrationSpec {
    @Qualifier("topicExchangeReceiverService")
    MQReceiver topicExchangeReceiver
 
-   MockMQListener mockListener
+   MQListener mockListener
 
    def setup() {
       mockListener = new MockMQListener()
@@ -57,10 +61,5 @@ class TestRabbitMQIntSpec extends IntegrationSpec {
         assert mockListener.getMessage() == MESSAGE
    }
 
-   private void waitForTheMessage(final MockMQListener listener) {
-      synchronized (listener) {
-         mockListener.wait(2000)
-      }
-   }
 
 }

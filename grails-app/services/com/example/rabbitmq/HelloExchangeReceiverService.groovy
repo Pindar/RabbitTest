@@ -1,19 +1,12 @@
 package com.example.rabbitmq
 
-import com.example.mq.MQListener
-import com.example.mq.MQReceiver
+import com.example.mq.AbstractMQReceiver
 
-class HelloExchangeReceiverService implements MQReceiver {
+class HelloExchangeReceiverService extends AbstractMQReceiver {
 
-   MQListener mqListener;
+
    @SuppressWarnings("GroovyUnusedDeclaration")
    static def rabbitSubscribe = 'hello-exchange'
-
-
-   @Override
-   void registerReceiver(MQListener mqListener) {
-      this.mqListener = mqListener
-   }
 
    @SuppressWarnings("GroovyUnusedDeclaration")
    void handleMessage(String message) {

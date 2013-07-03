@@ -38,6 +38,8 @@ grails.project.dependency.resolution = {
       //mavenRepo "http://download.java.net/maven/2/"
       //mavenRepo "http://repository.jboss.com/maven2/"
 
+      flatDir(name: "myRepo", dirs: "../lib")
+
    }
 
    dependencies {
@@ -45,6 +47,8 @@ grails.project.dependency.resolution = {
       // runtime 'mysql:mysql-connector-java:5.1.22'
       test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
       compile 'org.objenesis:objenesis:1.3'
+
+
    }
 
    plugins {
