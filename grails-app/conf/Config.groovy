@@ -106,6 +106,7 @@ rabbitmq {
 
       // configure exchanges
       exchange name: 'hello-exchange', type: fanout, durable: false
+      exchange name: 'topic-exchange', type: topic, durable: false
       exchange name: 'tadoappexchange', type: topic, durable: false
 
 //    Configuring RabbitMQ to start the RabbitMQ-Broker in RHEL/Fedora on bootup of System
