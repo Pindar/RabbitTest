@@ -70,6 +70,7 @@ environments {
 }
 
 // log4j configuration
+//noinspection GroovyUnusedAssignment
 log4j = {
     // Example of changing the log pattern for the default console appender:
     //
@@ -99,6 +100,12 @@ rabbitmq {
    }
    queues = {
       // Publish/Subscribe
+
+      // configure queues
+      'hello-queue'()
+
+      // configure exchanges
+      exchange name: 'hello-exchange', type: fanout, durable: false
       exchange name: 'tadoappexchange', type: topic, durable: false
 
 //    Configuring RabbitMQ to start the RabbitMQ-Broker in RHEL/Fedora on bootup of System
